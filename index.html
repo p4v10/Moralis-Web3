@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>LOL</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://npmcdn.com/moralis@0.0.6/dist/moralis.js"></script>
+</head>
+
+<body>
+  <button onclick="login()">Login with MetaMask</button>
+
+<script>
+  Moralis.initialize("eEY2rPL9db9Jij7rb6dw1dd03Z0GZ056VWex1HgE");
+  Moralis.serverURL = "https://xewlovnttmbt.moralis.io:2053/server";
+
+async function login(){
+      window.ethereum.enable();
+  		console.log("login clicked");
+  		var user = await Moralis.Web3.authenticate();
+  		if(user){
+  			console.log(user);
+  			user.set("nickname","John");
+  			user.set("fav_color","blue");
+  			user.save();
+  		}
+  	}
+</script>
+
+
+</body>
+</html>
